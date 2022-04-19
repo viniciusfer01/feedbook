@@ -1,3 +1,20 @@
+body {
+  background-color: #A7C5BD;
+  
+}
+
 .App {
   text-align: center;
+}
+
+.content {
+  margin: auto;
+  background-color: red;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.feedback {
+  background-color: white;
 }
