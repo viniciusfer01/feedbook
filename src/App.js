@@ -5,7 +5,8 @@ const FEEDBACK = ['bom trabalho', 'hoje você trabalhou muito bem!', 'obrigado p
 function App() {
   return (
     <div className="App">
-      <h1>Feedbook!</h1>
+      <h1>FeedBook</h1>
+      <img src="18625.png" alt="House" width="56" height="60"></img>
       <div className="content">
       {FEEDBACK.map((feedback) => {
         return <p className="feedback">{feedback}</p>
