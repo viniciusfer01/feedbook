@@ -1,4 +1,5 @@
 import house from "../assets/house.png";
+import "./Header.css";
 
 const Header = () => {
   return (

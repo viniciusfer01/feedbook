@@ -1,39 +1,40 @@
-import Header from "../components/Header";
 import { useState } from "react";
 
+import AddFeedbackButton from "../components/AddFeedbackButton";
+import PrivateFeedbacks from "../components/PrivateFeedbacks";
+
 const PrivateFeedbackList = (props) => {
-  const feedbacks = props.feedbacks;
-  const [isInputActive, setisInputActive] = useState(false);
+  const [feedbacks, setFeedbacks] = useState([
+    { id: "1", from: "elisa", to: "viniboy", content: "bom trabalho" },
+    {
+      id: "2",
+      from: "gabi",
+      to: "viniboy",
+      content: "hoje você trabalhou muito bem!",
+    },
+    {
+      id: "3",
+      from: "paulo",
+      to: "viniboy",
+      content: "obrigado por não ter comido meu bolinho (hoje)",
+    },
+  ]);
 
-  function botaoEnviarFeedback(){
-    if(!isInputActive){
-      return (
-        <div className="botao">
-        <button onClick={setisInputActive(true)}>Enviar Feedback</button>;
-      </div>
-      )
-    }
-
-    else{
-      return (<>
-      <input type='text' placeholder='Escreva seu feedback' />
-      <button>Enviar</button>
-      </>
-      )
-    }
-  }
+  const addNewFeedbackHandler = (newFeedback) => {
+    const newFeedbackItem = {
+      ...newFeedback,
+      id: Math.random().toString(),
+      to: "unknown",
+      from: "unknown",
+    };
+    setFeedbacks([...feedbacks, newFeedbackItem]);
+  };
 
   return (
-    <>
-      <Header />
-      <div className="content">
-        {feedbacks.map((feedback) => {
-          return <p className="feedback">{feedback}</p>;
-        })}
-      </div>
-
-      {botaoEnviarFeedback()}
-    </>
+    <div className="content">
+      <PrivateFeedbacks feedbacks={feedbacks} />
+      <AddFeedbackButton addFeedback={addNewFeedbackHandler} />
+    </div>
   );
 };
 export default PrivateFeedbackList;

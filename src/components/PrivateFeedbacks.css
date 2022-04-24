@@ -1,0 +1,10 @@
+.feedbacks {
+  margin: auto;
+  max-width: 90%;
+}
+
+.feedback {
+  padding: 1rem;
+  background-color: #c4c4c4;
+  border-radius: 1rem;
+}

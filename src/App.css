@@ -1,26 +1,26 @@
 body {
-  background-color: #A7C5BD;
+  background-color: #a7c5bd;
 }
 
 .App {
-  position: fixed;
   top: 27px;
   left: 156px;
-  color: #0B4654;
+  color: #0b4654;
 }
 
 .content {
   margin: auto;
   background-color: white;
-  max-width: 80%;
+  max-width: 70%;
   border-radius: 10px;
-  padding: 5px;
-}
-
-.feedback {
-  background-color: #C4C4C4;
-  border-radius: 5px;
+  padding: 2rem;
   text-align: center;
 }
 
-
+.toggleFeedback {
+  width: 90%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: larger;
+  font-weight: bold;
+}

@@ -1,23 +1,19 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
+import Header from "./components/Header";
 import PrivateFeedbackList from "./pages/PrivateFeedbackList";
 import ProxPagina from "./pages/ProxPagina";
-
-const FEEDBACK = [
-  "bom trabalho",
-  "hoje você trabalhou muito bem!",
-  "obrigado por não ter comido meu bolinho (hoje)",
-];
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Redirect to="/feedback" />
         </Route>
         <Route path="/feedback">
-          <PrivateFeedbackList feedbacks={FEEDBACK} />
+          <PrivateFeedbackList />
         </Route>
         <Route path="/nome-da-prox-pagina">
           <ProxPagina />
