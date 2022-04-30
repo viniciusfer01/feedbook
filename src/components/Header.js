@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import house from "../assets/house.png";
 import "./Header.css";
 
@@ -5,9 +6,14 @@ const Header = () => {
   return (
     <header>
       <h1>FeedBook</h1>
-      <a href="https://www.instagram.com/taylorswift/">
-        <img src={house} alt="House" width="56" height="60"></img>
-      </a>
+      <div>
+        <NavLink to="/feedback" activeClassName="nav-link" exact>
+          <img src={house} alt="House" width="56" height="60"></img>
+        </NavLink>
+        <NavLink to="/feedback/viniboy" activeClassName="nav-link">
+          <p>Feed Privado</p>
+        </NavLink>
+      </div>
     </header>
   );
 };

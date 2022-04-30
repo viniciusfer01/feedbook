@@ -24,3 +24,7 @@ body {
   font-size: larger;
   font-weight: bold;
 }
+
+.nav-link {
+  border-bottom: 5px solid #3f4b4829;
+}

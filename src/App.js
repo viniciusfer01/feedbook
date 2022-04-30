@@ -2,7 +2,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import PrivateFeedbackList from "./pages/PrivateFeedbackList";
-import ProxPagina from "./pages/ProxPagina";
+import PublicFeedbackList from "./pages/PublicFeedbackList";
 
 function App() {
   return (
@@ -12,11 +12,11 @@ function App() {
         <Route path="/" exact>
           <Redirect to="/feedback" />
         </Route>
-        <Route path="/feedback">
+        <Route path="/feedback/:userId">
           <PrivateFeedbackList />
         </Route>
-        <Route path="/nome-da-prox-pagina">
-          <ProxPagina />
+        <Route path="/feedback">
+          <PublicFeedbackList />
         </Route>
       </Switch>
     </div>
