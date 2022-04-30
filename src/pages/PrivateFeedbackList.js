@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 import AddFeedbackButton from "../components/AddFeedbackButton";
 import PrivateFeedbacks from "../components/PrivateFeedbacks";
 
 const PrivateFeedbackList = (props) => {
   const [feedbacks, setFeedbacks] = useState([]);
-  const { userId } = useParams();
 
   useEffect(() => {
     const fetchFeedbacks = async () => {
@@ -18,7 +16,7 @@ const PrivateFeedbackList = (props) => {
       const loadedFeedbacks = [];
 
       for (const key in responseData) {
-        if (responseData[key].to === userId) {
+        if (responseData[key].to === props.userName) {
           loadedFeedbacks.push({
             id: key,
             ...responseData[key],
@@ -30,7 +28,7 @@ const PrivateFeedbackList = (props) => {
     };
 
     fetchFeedbacks();
-  }, [userId]);
+  }, [props.userName]);
 
   const addNewFeedbackHandler = (newFeedback) => {
     const newFeedbackItem = {
@@ -38,13 +36,17 @@ const PrivateFeedbackList = (props) => {
       id: Math.random().toString(),
       to: "unknown",
       from: "unknown",
+      isPublic: true,
     };
-    setFeedbacks([...feedbacks, newFeedbackItem]);
+    fetch("https://feedbook-c5cbe-default-rtdb.firebaseio.com/feedbacks.json", {
+      method: "POST",
+      body: JSON.stringify(newFeedbackItem),
+    });
   };
 
   return (
     <div className="content">
-      <h2>Feed Privado de {userId}</h2>
+      <h2>Feed Privado de {props.userName}</h2>
       <PrivateFeedbacks feedbacks={feedbacks} />
       <AddFeedbackButton addFeedback={addNewFeedbackHandler} />
     </div>
