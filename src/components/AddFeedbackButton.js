@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { AuthContext } from "../context/auth-context";
 
 const AddFeedbackButton = (props) => {
   const [inputValue, setInputValue] = useState("");
+  const [toValue, setToValue] = useState("");
+  const [wasInputTouched, setWasInputTouched] = useState(false);
+  const [wasToTouched, setWasToTouched] = useState(false);
   const [isInputActive, setisInputActive] = useState(false);
+  const isInputValid = inputValue.length > 0 && wasInputTouched;
+  const isToValid = toValue.length > 0 && wasToTouched;
+  const isFormValid = isInputValid && isToValid;
+  const authContext = useContext(AuthContext);
 
   const changeInputState = () => {
     setisInputActive(!isInputActive);
   };
 
   const handleNewFeedback = () => {
-    if (inputValue.length > 0) {
-      props.addFeedback({ content: inputValue });
+    if (isFormValid) {
+      props.addFeedback({
+        from: authContext.user.name,
+        content: inputValue,
+        to: toValue,
+      });
       setInputValue("");
+      setToValue("");
       changeInputState();
     }
   };
@@ -22,10 +36,20 @@ const AddFeedbackButton = (props) => {
         <input
           value={inputValue}
           onChange={(e) => {
+            setWasInputTouched(true);
             setInputValue(e.target.value);
           }}
           type="text"
           placeholder="Escreva seu feedback"
+        />
+        <input
+          value={toValue}
+          onChange={(e) => {
+            setWasToTouched(true);
+            setToValue(e.target.value);
+          }}
+          type="text"
+          placeholder="Para:"
         />
         <button onClick={handleNewFeedback}>Enviar</button>
       </>
