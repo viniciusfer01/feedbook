@@ -32,7 +32,7 @@ const PublicFeedbackList = (props) => {
   return (
     <div className="content">
       <h2>Feed Público</h2>
-      <PrivateFeedbacks feedbacks={feedbacks} />
+      <PrivateFeedbacks feedbacks={feedbacks} isPublic={true} />
     </div>
   );
 };

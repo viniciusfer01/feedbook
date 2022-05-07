@@ -8,23 +8,10 @@ body {
   color: #0b4654;
 }
 
-.content {
-  margin: auto;
-  background-color: white;
-  max-width: 70%;
-  border-radius: 10px;
-  padding: 2rem;
-  text-align: center;
-}
-
 .toggleFeedback {
   width: 90%;
   height: 3rem;
   border-radius: 1rem;
   font-size: larger;
   font-weight: bold;
-}
-
-.nav-link {
-  border-bottom: 5px solid #3f4b4829;
 }

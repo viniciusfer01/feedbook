@@ -1,0 +1,14 @@
+header {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link {
+  border-bottom: 5px solid #3f4b4829;
+}
+
+.privateFeedButton {
+  color: black;
+  text-decoration: none;
+}

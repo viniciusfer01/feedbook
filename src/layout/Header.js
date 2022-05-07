@@ -10,7 +10,11 @@ const Header = () => {
         <NavLink to="/feedback" activeClassName="nav-link" exact>
           <img src={house} alt="House" width="56" height="60"></img>
         </NavLink>
-        <NavLink to="/feedback/viniboy" activeClassName="nav-link">
+        <NavLink
+          to="/feedback/private"
+          activeClassName="nav-link"
+          className="privateFeedButton"
+        >
           <p>Feed Privado</p>
         </NavLink>
       </div>
