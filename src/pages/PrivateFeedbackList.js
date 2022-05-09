@@ -44,7 +44,7 @@ const PrivateFeedbackList = () => {
       id: Math.random().toString(),
       to: newFeedback.to,
       from: newFeedback.from,
-      isPublic: true,
+      isPublic: newFeedback.isPublic,
     };
     fetch("https://feedbook-c5cbe-default-rtdb.firebaseio.com/feedbacks.json", {
       method: "POST",
