@@ -14,6 +14,7 @@ const PrivateFeedbacks = (props) => {
               <p>Para: {feedback.to}</p>
               <br></br>
             </div>
+            
           );
         })}
       </div>

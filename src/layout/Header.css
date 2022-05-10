@@ -5,10 +5,25 @@ header {
 }
 
 .nav-link {
-  border-bottom: 5px solid #3f4b4829;
+  border-bottom: 10px solid #3f4b4829;
+}
+
+.nav-link:hover {
+  border-bottom: 10px solid white;
+  
 }
 
 .privateFeedButton {
   color: black;
   text-decoration: none;
+  background-color: black;
+  font-weight: bold;
 }
+
+.privateFeedButton:hover {
+  color: white;
+  text-decoration: blink; 
+  font-weight: bold;
+}
+
+

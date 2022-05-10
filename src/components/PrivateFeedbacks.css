@@ -1,10 +1,17 @@
 .feedbacks {
   margin: auto;
   max-width: 90%;
+  
 }
 
 .feedback {
   padding: 1rem;
   background-color: #c4c4c4;
+  border-radius: 1rem;
+}
+
+.feedback:hover {
+  padding: 1rem;
+  background-color: #91d1ac;
   border-radius: 1rem;
 }
