@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import house from "../assets/house.png";
 import "./Header.css";
 
+//ajeitar depois... "can't use navlink outside react component"
 const Header = () => {
   return (
     <header>
