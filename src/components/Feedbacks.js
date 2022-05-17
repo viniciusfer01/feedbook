@@ -1,6 +1,6 @@
-import "./PrivateFeedbacks.css";
+import "./Feedbacks.css";
 
-const PrivateFeedbacks = (props) => {
+const Feedbacks = (props) => {
   const feedbacks = props.feedbacks;
 
   if (props.isPublic) {
@@ -12,6 +12,7 @@ const PrivateFeedbacks = (props) => {
               <p className="de">De: {feedback.from}</p>
               <p className="feedback">{feedback.content}</p>
               <p>Para: {feedback.to}</p>
+              <p>Likes: {feedback.likes}</p>
               <br></br>
             </div>
           );
@@ -27,10 +28,11 @@ const PrivateFeedbacks = (props) => {
           <div key={feedback.id}>
             <p className="de">De: {feedback.from}</p>
             <p className="feedback">{feedback.content}</p>
+            <p>Likes: {feedback.likes}</p>
           </div>
         );
       })}
     </div>
   );
 };
-export default PrivateFeedbacks;
+export default Feedbacks;

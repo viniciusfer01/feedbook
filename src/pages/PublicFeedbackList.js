@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import PrivateFeedbacks from "../components/PrivateFeedbacks";
+import Feedbacks from "../components/Feedbacks";
 
 const PublicFeedbackList = (props) => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -32,7 +32,7 @@ const PublicFeedbackList = (props) => {
   return (
     <div className="content">
       <h2>Feed Público</h2>
-      <PrivateFeedbacks feedbacks={feedbacks} isPublic={true} />
+      <Feedbacks feedbacks={feedbacks} isPublic={true} />
     </div>
   );
 };
