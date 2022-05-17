@@ -3,6 +3,13 @@ import "./Feedbacks.css";
 const Feedbacks = (props) => {
   const feedbacks = props.feedbacks;
 
+  const likeHandler = (id) => {
+    fetch(
+      `https://feedbook-c5cbe-default-rtdb.firebaseio.com/feedbacks/${id}/likes.json`,
+      { method: "UPDATE" }
+    );
+  };
+
   if (props.isPublic) {
     return (
       <div className="feedbacks">
@@ -12,7 +19,10 @@ const Feedbacks = (props) => {
               <p className="de">De: {feedback.from}</p>
               <p className="feedback">{feedback.content}</p>
               <p>Para: {feedback.to}</p>
-              <p>Likes: {feedback.likes}</p>
+              <p>
+                Likes: {feedback.likes}{" "}
+                <button onClick={() => likeHandler(feedback.id)}>Curtir</button>
+              </p>
               <br></br>
             </div>
           );
@@ -28,7 +38,10 @@ const Feedbacks = (props) => {
           <div key={feedback.id}>
             <p className="de">De: {feedback.from}</p>
             <p className="feedback">{feedback.content}</p>
-            <p>Likes: {feedback.likes}</p>
+            <p>
+              Likes: {feedback.likes}{" "}
+              <button onClick={() => likeHandler(feedback.id)}>Curtir</button>
+            </p>
           </div>
         );
       })}

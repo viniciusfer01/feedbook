@@ -27,7 +27,7 @@ const PublicFeedbackList = (props) => {
     };
 
     fetchFeedbacks();
-  }, []);
+  }, [feedbacks]);
 
   return (
     <div className="content">
