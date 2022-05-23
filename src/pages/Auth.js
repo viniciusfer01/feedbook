@@ -11,8 +11,6 @@ const Auth = () => {
     const user = { name: userName };
     authContext.login(user);
     setUserName("");
-    console.log(user.name);
-    console.log(authContext.user.name);
   };
 
   let content = <p>Loading...</p>;
@@ -29,6 +27,9 @@ const Auth = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
+          <br />
+          <input type="password" placeholder="Senha:" />
+          <br />
           <button type="submit">Login</button>
         </form>
       </Card>

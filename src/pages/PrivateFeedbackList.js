@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
 import AddFeedbackButton from "../components/AddFeedbackButton";
-import PrivateFeedbacks from "../components/PrivateFeedbacks";
+import Feedbacks from "../components/Feedbacks";
 import { AuthContext } from "../context/auth-context";
 import Card from "../layout/Card";
 
@@ -62,7 +62,7 @@ const PrivateFeedbackList = () => {
   return (
     <Card>
       <h2>Feed Privado de {authContext.user.name}</h2>
-      <PrivateFeedbacks feedbacks={feedbacks} />
+      <Feedbacks feedbacks={feedbacks} />
       <AddFeedbackButton addFeedback={addNewFeedbackHandler} />
     </Card>
   );

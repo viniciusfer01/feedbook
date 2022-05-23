@@ -12,7 +12,8 @@ const AddFeedbackButton = (props) => {
   const [isInputActive, setisInputActive] = useState(false);
   const isInputValid = inputValue.length > 0 && wasInputTouched;
   const isToValid = toValue.length > 0 && wasToTouched;
-  const isIsPublicValueValid = isPublicValue.length > 0 && wasIsPublicValueTouched;
+  const isIsPublicValueValid =
+    isPublicValue.length > 0 && wasIsPublicValueTouched;
   const isFormValid = isInputValid && isToValid && isIsPublicValueValid;
   const authContext = useContext(AuthContext);
 
@@ -27,13 +28,13 @@ const AddFeedbackButton = (props) => {
         from: authContext.user.name,
         content: inputValue,
         to: toValue,
-        isPublic: isPublic
+        isPublic: isPublic,
       });
       setInputValue("");
       setWasInputTouched(false);
       setToValue("");
       setWasToTouched(false);
-      setIsPublicValue("")
+      setIsPublicValue("");
       setIsPublicValueTouched(false);
       changeInputState();
     }
@@ -51,6 +52,7 @@ const AddFeedbackButton = (props) => {
           type="text"
           placeholder="Escreva seu feedback"
         />
+        <br />
         <input
           value={toValue}
           onChange={(e) => {
@@ -60,8 +62,17 @@ const AddFeedbackButton = (props) => {
           type="text"
           placeholder="Para:"
         />
-        <input value={isPublicValue} onChange={e => {setIsPublicValueTouched(true); setIsPublicValue(e.target.value);
-          }} type="text" placeholder="É público? (sim ou não)"></input>
+        <br />
+        <input
+          value={isPublicValue}
+          onChange={(e) => {
+            setIsPublicValueTouched(true);
+            setIsPublicValue(e.target.value);
+          }}
+          type="text"
+          placeholder="É público? (sim ou não)"
+        ></input>
+        <br />
 
         <button onClick={handleNewFeedback}>Enviar</button>
       </>
