@@ -1,14 +1,28 @@
 import "./Feedbacks.css";
+import { initializeApp } from "firebase/app";
+import { getDatabase, update, ref } from "firebase/database";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBFJJr973yr1338iccT9CaT0RXQOl6aG50",
+  authDomain: "feedbook-c5cbe.firebaseapp.com",
+  databaseURL: "https://feedbook-c5cbe-default-rtdb.firebaseio.com",
+  projectId: "feedbook-c5cbe",
+  storageBucket: "feedbook-c5cbe.appspot.com",
+  messagingSenderId: "524611669918",
+  appId: "1:524611669918:web:b23092eaffdcbe1abf508f",
+};
+
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const database = getDatabase(app);
 
 const Feedbacks = (props) => {
   const feedbacks = props.feedbacks;
 
-  const likeHandler = (id) => {
+  const likeHandler = (id, likes) => {
     console.log("dei like!");
-    fetch(
-      `https://feedbook-c5cbe-default-rtdb.firebaseio.com/feedbacks/${id}/likes.json`,
-      { method: "UPDATE" }
-    );
+    update(ref(database, `feedbacks/${id}`), { likes: likes + 1 });
   };
 
   if (props.isPublic) {
@@ -22,7 +36,11 @@ const Feedbacks = (props) => {
               <p>Para: {feedback.to}</p>
               <p>
                 Likes: {feedback.likes}{" "}
-                <button onClick={() => likeHandler(feedback.id)}>Curtir</button>
+                <button
+                  onClick={() => likeHandler(feedback.id, feedback.likes)}
+                >
+                  Curtir
+                </button>
               </p>
               <br></br>
             </div>
