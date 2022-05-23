@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-
+import "./AddFeedbackForm.css";
 import { AuthContext } from "../context/auth-context";
 
 const AddFeedbackButton = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [toValue, setToValue] = useState("");
   const [isPublicValue, setIsPublicValue] = useState("");
+  const [isAnonymousValue, setIsAnonymousValue] = useState("");
   const [wasInputTouched, setWasInputTouched] = useState(false);
   const [wasToTouched, setWasToTouched] = useState(false);
   const [wasIsPublicValueTouched, setIsPublicValueTouched] = useState(false);
@@ -25,7 +26,7 @@ const AddFeedbackButton = (props) => {
     if (isFormValid) {
       let isPublic = isPublicValue === "sim" ? true : false;
       props.addFeedback({
-        from: authContext.user.name,
+        from: isAnonymousValue.length > 0 ? "Anônimo" : authContext.user.name,
         content: inputValue,
         to: toValue,
         isPublic: isPublic,
@@ -36,6 +37,7 @@ const AddFeedbackButton = (props) => {
       setWasToTouched(false);
       setIsPublicValue("");
       setIsPublicValueTouched(false);
+      setIsAnonymousValue("");
       changeInputState();
     }
   };
@@ -44,6 +46,7 @@ const AddFeedbackButton = (props) => {
     return (
       <>
         <input
+          className="addFeedbackInput"
           value={inputValue}
           onChange={(e) => {
             setWasInputTouched(true);
@@ -54,6 +57,7 @@ const AddFeedbackButton = (props) => {
         />
         <br />
         <input
+          className="addFeedbackInput"
           value={toValue}
           onChange={(e) => {
             setWasToTouched(true);
@@ -64,6 +68,7 @@ const AddFeedbackButton = (props) => {
         />
         <br />
         <input
+          className="addFeedbackInput"
           value={isPublicValue}
           onChange={(e) => {
             setIsPublicValueTouched(true);
@@ -73,8 +78,19 @@ const AddFeedbackButton = (props) => {
           placeholder="É público? (sim ou não)"
         ></input>
         <br />
-
-        <button onClick={handleNewFeedback}>Enviar</button>
+        <input
+          className="addFeedbackInput"
+          value={isAnonymousValue}
+          type="text"
+          placeholder="É anônimo? (deixe em branco se não for)"
+          onChange={(e) => {
+            setIsAnonymousValue(e.target.value);
+          }}
+        />
+        <br />
+        <button className="addFeedbackButton" onClick={handleNewFeedback}>
+          Enviar
+        </button>
       </>
     );
   } else {
