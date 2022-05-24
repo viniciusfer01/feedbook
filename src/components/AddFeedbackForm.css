@@ -1,0 +1,12 @@
+.addFeedbackInput,
+.addFeedbackButton {
+  padding: 1.2rem;
+  width: 80%;
+  height: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.addFeedbackButton {
+  width: 85%;
+}

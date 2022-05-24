@@ -4,6 +4,7 @@ import Feedbacks from "../components/Feedbacks";
 
 const PublicFeedbackList = (props) => {
   const [feedbacks, setFeedbacks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchFeedbacks = async () => {
@@ -24,6 +25,7 @@ const PublicFeedbackList = (props) => {
       }
 
       setFeedbacks(loadedFeedbacks);
+      setIsLoading(false);
     };
 
     fetchFeedbacks();
@@ -32,6 +34,7 @@ const PublicFeedbackList = (props) => {
   return (
     <div className="content">
       <h2>Feed Público</h2>
+      {isLoading && <p>Loading...</p>}
       <Feedbacks feedbacks={feedbacks} isPublic={true} />
     </div>
   );
