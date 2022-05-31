@@ -10,20 +10,16 @@ header {
 
 .nav-link:hover {
   border-bottom: 10px solid white;
-  
 }
 
-.privateFeedButton {
-  color: black;
-  text-decoration: none;
-  background-color: black;
-  font-weight: bold;
-}
-
-.privateFeedButton:hover {
+.navigationButton:hover {
   color: white;
-  text-decoration: blink; 
+  text-decoration: blink;
   font-weight: bold;
 }
 
-
+.navigation {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+}
